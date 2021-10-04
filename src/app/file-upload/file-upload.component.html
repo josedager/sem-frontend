@@ -1,0 +1,51 @@
+<div class="text-center m-5">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Time In Word</h1>
+            <p class="lead">
+                El siguiente servicio permite convertir una lista de Hora/Minutos en su valor
+                en letras en el idioma Inglés.
+            </p>
+            <p>Para ello debe subir un archivo separando las horas y minutos línea a línea</p>
+            <p>Ejemplo: <br>5<br>47<br>6<br>12</p>
+        </div>
+    </div>
+    <div class="row col-6 offset-3">
+        <div class="col col-10">
+            <input class="form-control" type="file" (change)="onChange($event)">
+        </div>
+        <div class="col col-2">
+            <button (click)="onUpload()" class="btn btn-success">
+                Convertir
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="m-5">
+    <h3  *ngIf="loading">Loading ...</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Minutos</th>
+                <th scope="col">Time In Words</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let time of timeInWords; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>
+                    {{time.hora}}
+                </td>
+                <td>
+                    {{time.minutos}}
+                </td>
+                <td>
+                    {{time.timeInWord}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
